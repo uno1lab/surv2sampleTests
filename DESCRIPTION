@@ -1,0 +1,12 @@
+Package: surv2sampleTests
+Type: Package
+Title: Conducting Two Sample Tests with Time-To-Event Data
+Version: 0.0-1
+Author: Miki Horiguchi, Hajime Uno
+Maintainer: Miki Horiguchi <horiguchimiki@gmail.com>
+Depends: survival
+Description: Performs two-sample comparisons using various tests. The current version includes the Max-combo test and the t-year event rate difference test.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0.9000
