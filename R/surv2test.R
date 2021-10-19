@@ -3,8 +3,13 @@
 #' @title Conducting Two Sample Tests with Time-To-Event Data
 #' @description Performs two-sample comparisons using various tests.
 #' The current version includes the Max-Combo test and the t-year event rate difference test
-#' that were used in Horiguchi et al. (2020) <doi:10.1177/1740774520940256>. All tests are two-sided where the alternative hypothesis is that
-#' treatment group is not equal to control group with respect to survival. For the Max-Combo test, we used a purmutation resampling method to determine the null distribution of the test statistic under the null hypothesis.
+#' that were used in Horiguchi et al. (2020) <doi:10.1177/1740774520940256>.
+#' The test statistic of the Max-Combo test is the maximum of test statistics from multiple weighted log-rank tests in the G(rho,gamma) class.
+#' Specifically, they are the log-rank test (G(0,0)), the generalized Wilcoxon test (G(1,0)), and two other tests (G(0,1) and G(1,1)).
+#' For the Max-Combo test, we used a permutation resampling method to determine the null distribution of the test statistic under the null hypothesis.
+#' The t-year event rate difference test compares survival probabilities at a specific time point.
+#' All tests are two-sided where the alternative hypothesis is that
+#' treatment group is not equal to control group with respect to survival.
 #' @author Miki Horiguchi, Hajime Uno
 #' @references
 #' Horiguchi M, Hassett MJ, Uno H. Empirical power comparison of statistical tests in contemporary phase III randomized controlled trials
@@ -13,7 +18,7 @@
 #' @param time The follow-up time for right censored data.
 #' @param status The status indicator, 1=event, and 0=right censored.
 #' @param arm The group indicator for comparison. The elements of this vector take either 1 or 0. Normally, 0=control group, 1=active treatment group.
-#' @param tau A scaler value to specify the specific time point for calculating the t-year event rate difference.
+#' @param tau A scalar value to specify the specific time point for calculating the t-year event rate difference.
 #' \code{tau} needs to be smaller than the minimum of the largest observed time in each of the two groups. When \code{tau = NULL}, the default value (i.e., the minimum of the largest observed time in each of the two groups) is used.
 #' @param nmethod A number of iterations for the resampling method. Recommended to specify at least 10000 (default) or larger.
 #' @param seed An integer value, used for the random number generation in the resampling procedures. Default is \code{NULL}.
